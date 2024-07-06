@@ -5,6 +5,7 @@ import pickle
 import os
 import sys
 import numpy as np
+import pandas as pd
 sys.path.append('../')
 from utils import get_center_of_bbox, get_bbox_width
 class Tracker:
@@ -12,7 +13,18 @@ class Tracker:
         self.model = YOLO(model_path)
         self.tracker = sv.ByteTrack()
 
-    def
+    def interpolate_ball_position(self,ball_positions):
+        ball_positions = [x.get(1,{}).get('bbox',[]) for x in ball_positions]
+
+        df_ball_positions = pd.DataFrame(ball_positions, columns=['x1','y1','x2','y2'])
+
+        df_ball_positions = df_ball_positions.interpolate()
+        df_ball_positions = df_ball_positions.bfill()
+
+        ball_positions = [{1:{"bbox": x}} for x in df_ball_positions.to_numpy().tolist()]
+
+        return ball_positions
+
     def detect_frames(self, frames):
         batch_size = 20
         detections = []
