@@ -5,6 +5,9 @@ from trackers import Tracker
 from teams import TeamAssigner
 from head_player import HeadPlayer
 import numpy as np
+from view_transformer import ViewTransformer
+from speed_and_distance import SpeedAndDistance
+from camera_movement import CameraMovement
 def main():
 
     print("Reading the video")
@@ -16,7 +19,23 @@ def main():
                                        read_from_stub=True,
                                        stub_path='stubs/track_stubs.pkl')
 
+    tracker.add_position_to_tracks(tracks)
+
+    camera_movement = CameraMovement(video_frames[0])
+    camera_movement_per_frame = camera_movement.get_camera_movement(video_frames,
+                                                                    read_from_stub=True,
+                                                                    stub_path='stubs/camera_movement_stub.pkl')
+
+    camera_movement.add_adjust_positions_to_tracks(tracks,camera_movement_per_frame)
+
+    view_transformer = ViewTransformer()
+    view_transformer.add_transformed_position_to_tracks(tracks)
+
     tracks["ball"] = tracker.interpolate_ball_position(tracks["ball"])
+
+    speed_and_distance = SpeedAndDistance()
+    speed_and_distance.add_speed_and_distance_to_tracks(tracks)
+
 
     teams = TeamAssigner()
     teams.assign_team_color(video_frames[0],tracks['players'][0])
@@ -42,6 +61,9 @@ def main():
 
     print("Drawing annotations")
     output_video_frames = tracker.draw_annotations(video_frames,tracks,team_ball_control)
+
+    speed_and_distance.draw_speed_and_distance(output_video_frames,tracks)
+
     print("Saving the video")
     save_video(output_video_frames, 'output_video/output_video.avi')
 
