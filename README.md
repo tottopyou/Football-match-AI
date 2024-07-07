@@ -19,7 +19,10 @@ This project focuses on monitoring football matches using a custom-trained YOLOv
 
 ## Result
 
-![output_video.mp4](https://github.com/tottopyou/Football-match-AI/assets/110258834/5f87e5a0-b0c9-410c-8d8c-6ace87a52730)
+![image](https://github.com/tottopyou/Football-match-AI/assets/110258834/9c936191-b5d0-4d67-88a5-5a7f499bdfe2)
+
+### Full video you can see here :  [Full Video](https://github.com/tottopyou/Football-match-AI/assets/110258834/cbfa0e13-d613-4874-9337-32507d63ea1b)
+
 
 ## Requirements
 
