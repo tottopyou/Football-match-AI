@@ -7,7 +7,7 @@ This project focuses on monitoring football matches using a custom-trained YOLOv
 
 **Player and Referee Detection:** Identify and classify players and referees in the frame.
 
-**Team Division:** Automatically divide players into their respective teams.
+**Team Division:** Automatically divides players into the appropriate teams using the color of the shirts.
 
 **Enhanced Ball Tracking:** Maintain ball tracking using information from previous frames when the ball is occluded.
 
