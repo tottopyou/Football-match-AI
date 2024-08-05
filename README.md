@@ -1,4 +1,13 @@
 # Football Match Monitoring System
+
+![Python](https://img.shields.io/badge/Python-3.8%2B-blue)
+![ultralytics](https://img.shields.io/badge/ultralytics-0.1%2B-orange)
+![supervision](https://img.shields.io/badge/supervision-0.1%2B-green)
+![OpenCV](https://img.shields.io/badge/OpenCV-4.5%2B-red)
+![NumPy](https://img.shields.io/badge/NumPy-1.19%2B-orange)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-3.3%2B-yellow)
+![Pandas](https://img.shields.io/badge/Pandas-1.1%2B-green)
+
 ## Overview
 
 This project focuses on monitoring football matches using a custom-trained YOLOv5x model. The system is capable of detecting and tracking players, referees, and the ball. It divides players into teams, improves ball tracking even when the ball is not visible in the current frame by leveraging information from previous frames, and identifies the player controlling the ball. Additionally, it tracks every player's speed and distance covered, displaying ball control percentages on the screen.
